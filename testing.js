@@ -1,6 +1,14 @@
-const obj = {name:"Michael"}
+const {readFile, writeFile} = require('fs').promises
+const {join} = require('path')
 
-if(obj > 10)
-    console.log("true")
-else
-    console.log("false")
+const copy = async (src, dst) => {
+    try {
+        const data = await readFile(src)
+        await writeFile(dst, data)
+        console.log("File copied: ", data)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+copy(join(__dirname, 'test.txt'), join(__dirname, 'copy.txt'))
