@@ -14,7 +14,7 @@ const app = express()
 // validation
 const queryFruit = Joi.object({
     name: Joi.string().alphanum().required(),
-    color: Joi.string()
+    color: Joi.string(),
 })
 
 app.use(express.json())
@@ -61,8 +61,8 @@ app.route('/fruits/:id')
         try {
             const id = parseInt(req.params.id)
             const fruit = DATA.find((fruit) => fruit.id === id)
-            res.send(fruit)    
-        } catch(error) {
+            res.send(fruit)
+        } catch (error) {
             next(error)
         }
     })
@@ -74,13 +74,13 @@ app.route('/fruits/:id')
             else {
                 DATA.splice(index, 1, { ...req.body, id })
                 res.send(DATA[index])
-            }    
-        } catch(error) {
+            }
+        } catch (error) {
             next(error)
         }
     })
     .patch((req, res, next) => {
-        try{
+        try {
             const id = parseInt(req.params.id)
             const index = DATA.findIndex((fruit) => fruit.id === id)
             if (index === -1) res.status(400).send('Unknown id')
@@ -88,7 +88,7 @@ app.route('/fruits/:id')
                 Object.assign(DATA[index], req.body)
                 res.send(DATA[index])
             }
-        } catch(error){
+        } catch (error) {
             next(error)
         }
     })
@@ -101,25 +101,25 @@ app.route('/fruits/:id')
                 DATA.splice(index, 1)
                 res.sendStatus(204)
             }
-        } catch(error) {
+        } catch (error) {
             next(error)
         }
     })
 
-app.get("/error", (req, res, next) => {
+app.get('/error', (req, res, next) => {
     try {
-        throw new Error("Test error")
-    } catch(error) {
+        throw new Error('Test error')
+    } catch (error) {
         next(error)
     }
 })
 
 app.use((req, res, next) => {
-    res.status(404).send({message: "404 - Not found"})
+    res.status(404).send({ message: '404 - Not found' })
 })
 
 app.use((err, req, res, next) => {
-    res.status(500).json({message: "500 - Internal Error"})
+    res.status(500).json({ message: '500 - Internal Error' })
     console.log(err)
 })
 
