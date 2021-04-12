@@ -1,0 +1,27 @@
+GET http://localhost:3100/fruits
+
+
+###
+
+POST http://localhost:3100/fruits
+
+{
+    "name": "Apfel",
+    "color": "green"
+}
+
+
+###
+
+PUT http://localhost:3100/fruits/1
+Content-Type: application/json
+
+{
+    "name": "Fauler Apfel",
+    "color": "grün, gelb, rot"
+}
+
+###
+DELETE http://localhost:3100/fruits/3
+
+
