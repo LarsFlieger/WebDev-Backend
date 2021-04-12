@@ -16,13 +16,6 @@ app.get("/fruits", (req, res) => {
   res.send(DATA)
 })
 
-app.get("/fruits/:id", (req, res) => {
-  const id = parseInt(req.params.id)
-  console.log(id)
-  const item = DATA.find((o) => o.id === id)
-  res.send(item)
-})
-
 app.post("/fruits", (req, res) => {
   const { name, color } = req.body
   if (DATA.some((o) => o.name === name)) {
@@ -34,6 +27,12 @@ app.post("/fruits", (req, res) => {
     DATA.push(fruit)
     res.send(fruit)
   }
+})
+app.get("/fruits/:id", (req, res) => {
+  const id = parseInt(req.params.id)
+  console.log(id)
+  const item = DATA.find((o) => o.id === id)
+  res.send(item)
 })
 
 // TODO: put
@@ -48,7 +47,7 @@ app.put("/fruits/:id", (req, res) => {
 })
 
 // TODO: patch
-app.put("/fruits/:id", (req, res) => {
+app.patch("/fruits/:id", (req, res) => {
   const id = parseInt(req.params.id)
   const index = DATA.findIndex((o) => o.id === id)
   if (index === -1) res.status(400).send("Unknown id")
