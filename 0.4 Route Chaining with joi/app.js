@@ -1,4 +1,6 @@
+const Joi = require('joi')
 const express = require('express')
+const validator = require('express-joi-validation').createValidator({})
 
 const PORT = 3100
 const DATA = [
@@ -8,6 +10,12 @@ const DATA = [
 ]
 let firstLoggingSent = false
 const app = express()
+
+// validation
+const queryFruit = Joi.object({
+    name: Joi.string().alphanum().required(),
+    color: Joi.string()
+})
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -27,7 +35,7 @@ app.route('/fruits')
     .get((req, res) => {
         res.send(DATA)
     })
-    .post((req, res) => {
+    .post(validator.body(queryFruit), (req, res) => {
         const { name, color } = req.body
         if (DATA.some((fruit) => fruit.name === name)) {
             res.status(400).send('Duplicate name. Nothing inserted')
@@ -72,6 +80,7 @@ app.route('/fruits/:id')
             res.sendStatus(204)
         }
     })
+
 
 app.listen(PORT)
 console.log(`Server listening on port ${PORT}`)

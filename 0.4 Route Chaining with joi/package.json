@@ -1,0 +1,16 @@
+{
+  "name": "rest-api-logging",
+  "version": "1.0.0",
+  "description": "A simple RESTful API with logging",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-joi-validation": "^5.0.0",
+    "joi": "^17.4.0"
+  }
+}

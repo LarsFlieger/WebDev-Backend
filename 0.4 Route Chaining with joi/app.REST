@@ -1,0 +1,36 @@
+### Get all fruits
+GET http://localhost:3100/fruits
+
+
+### Add fruit
+POST http://localhost:3100/fruits
+Content-Type: application/json
+
+{
+    "name": "Kiwi",
+    "color": "grün"
+}
+
+
+### Get fruit by id
+GET http://localhost:3100/fruits/1
+
+### 
+PUT http://localhost:3100/fruits/1
+Content-Type: application/json
+
+{
+    "name": "Goldener Apfel",
+    "color": "gold"
+}
+
+### 
+PATCH http://localhost:3100/fruits/1
+Content-Type: application/json
+
+{
+    "color": "bronze"
+}
+
+###
+DELETE http://localhost:3100/fruits/1
