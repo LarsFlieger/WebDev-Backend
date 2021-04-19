@@ -1,0 +1,42 @@
+<html>
+<link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css" />
+
+<body>
+	<main>
+		<h3>Fruits</h3>
+		<a href="/fruits/upload"><button>Add Fruit</button></a>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Farbe</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% fruits.forEach( o=> { %>
+					<tr>
+						<td>
+							<%= o.name %>
+						</td>
+						<td><a href="/fruits/<%= o.id %>">Details</a></td>
+						<td><button onclick="deleteFruit('<%= o.id %>')">X</button></td>
+					</tr>
+					<% }) %>
+			</tbody>
+		</table>
+	</main>
+</body>
+
+<script>
+	async function deleteFruit(id) {
+		const req = await fetch('http://localhost:3000/fruits/' + id, {
+			method: 'DELETE'
+		})
+		const data = await req.status
+		if(data === 204)
+			location.reload()
+	}
+</script>
+
+</html>

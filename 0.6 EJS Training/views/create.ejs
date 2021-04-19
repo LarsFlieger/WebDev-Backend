@@ -1,0 +1,22 @@
+<html>
+  <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css" />
+  <style>
+    button[type=submit] {
+        float: right;
+        margin-top: 1rem;
+    }
+  </style>
+  <body>
+    <main>
+        <a href="/fruits"><button>Home</button></a>
+        <h3>Add Fruit</h3>
+        <form action="/fruits" method="POST">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="color" placeholder="Apple" required>
+            <label for="name">Color: </label>
+            <input type="text" name="color" id="color" placeholder="Green, Red" required>
+            <button type="submit">Hinzufügen</button>
+        </form>
+    </main>
+  </body>
+</html>
