@@ -59,11 +59,11 @@ app.route('/fruits/:id')
     })
 
 app.use((req, res, next) => {
-    res.status(404).send({ message: '404 - Not found' })
+    res.render('error/404')
 })
 
 app.use((err, req, res, next) => {
-    res.status(500).json({ message: '500 - Internal Error' })
+    res.render('error/500')
     console.log(err)
 })
 
