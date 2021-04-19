@@ -1,8 +1,8 @@
 const express = require('express')
 const session = require('express-session')
 
-const PORT = 3100;
-const RATE_LIMIT = 10;
+const PORT = 3100
+const RATE_LIMIT = 10
 
 const app = express()
 app.use(session({
@@ -38,5 +38,5 @@ app.get('/', (req, res) => {
     }).status(405)
 })
 
-app.listen(PORT);
-console.log(`Server listening on port ${PORT}`);
+app.listen(PORT)
+console.log(`Server listening on port ${PORT}`)
